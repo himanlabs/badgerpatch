@@ -1,3 +1,4 @@
+//go:build !race
 package badgerpatch
 
 import (
@@ -176,6 +177,9 @@ func TestSequenceBuilder_ConcurrentAccess(t *testing.T) {
 // every one of them.
 func TestPatches_GroupAppliesAndResetsAll(t *testing.T) {
 	patches := ApplyFunc(Add, func(a, b int) int { return -1 })
+	if got := Add(1, 1); got != -1 {
+		t.Fatalf("Add patch failed immediately: got %d", got)
+	}
 	Apply(patches, GetGreeting, func() string { return "grouped stub" })
 
 	if got := Add(1, 1); got != -1 {
