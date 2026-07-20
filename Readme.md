@@ -65,7 +65,7 @@ go test -v -gcflags="all=-N -l" ./...
 # 📦 Installation
 
 ```bash
-go get github.com/yourusername/badgerpatch
+go get github.com/himanlabs/badgerpatch
 ```
 
 ---
@@ -82,7 +82,7 @@ package main
 import (
     "testing"
 
-    "github.com/yourusername/badgerpatch"
+    "github.com/himanlabs/badgerpatch"
 )
 
 func FetchData() string {
